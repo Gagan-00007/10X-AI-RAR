@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10X-AI RAR | Five Days National FDP | AIEMS Bidadi</title>
+  <meta name="description" content="Five Days National Faculty Development Program (FDP) on 10X-AI RAR: 10X - AI Research Acceleration & Revolutions. Organized by AIEMS in association with IEEE. 27-31 July 2026.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ----------------------------------
+       CSS VARIABLES & BASE STYLES
+       ---------------------------------- */
+    :root {
+      --primary: #7c3aed; /* Vibrant Violet */
+      --primary-dark: #6d28d9;
+      --primary-light: #f5f3ff;
+      --text-main: #0f172a; /* Slate 900 */
+      --text-muted: #475569; /* Slate 600 */
+      --bg-main: #ffffff;
+      --bg-alt: #f8fafc; /* Slate 50 */
+      --border: #e2e8f0; /* Slate 200 */
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --shadow: 0 10px 30px -10px rgba(109, 40, 217, 0.08);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ----------------------------------
+       SCROLL REVEAL ANIMATIONS
+       ---------------------------------- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.21, 1.02, 0.43, 1.01), 
+                  transform 0.8s cubic-bezier(0.21, 1.02, 0.43, 1.01);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .slide-in-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.8s cubic-bezier(0.21, 1.02, 0.43, 1.01), 
+                  transform 0.8s cubic-bezier(0.21, 1.02, 0.43, 1.01);
+    }
+
+    .slide-in-left.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .slide-in-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.8s cubic-bezier(0.21, 1.02, 0.43, 1.01), 
+                  transform 0.8s cubic-bezier(0.21, 1.02, 0.43, 1.01);
+    }
+
+    .slide-in-right.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* delay classes */
+    .delay-100 { transition-delay: 100ms; }
+    .delay-200 { transition-delay: 200ms; }
+    .delay-300 { transition-delay: 300ms; }
+
+    /* ----------------------------------
+       HEADER & NAVIGATION
+       ---------------------------------- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      transition: var(--transition);
+    }
+
+    header.scrolled {
+      padding: 12px 0;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 72px;
+    }
+
+    .logo-block {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--primary);
+    }
+
+    .logo-subtitle {
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    nav a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .nav-btn {
+      padding: 10px 20px;
+      background-color: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      border: 1px solid var(--primary);
+    }
+
+    .nav-btn:hover {
+      background-color: var(--primary-dark);
+      color: #fff;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      width: 24px;
+    }
+
+    .menu-toggle span {
+      display: block;
+      height: 2px;
+      background-color: var(--text-main);
+      width: 100%;
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    /* ----------------------------------
+       HERO SECTION
+       ---------------------------------- */
+    .hero {
+      position: relative;
+      padding: 160px 0 80px 0;
+      background: radial-gradient(circle at 90% 10%, var(--primary-light) 0%, transparent 60%);
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 14px;
+      background-color: var(--primary-light);
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: 50px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(124, 58, 237, 0.15);
+    }
+
+    .badge-ieee {
+      background-color: #e0f2fe;
+      color: #0369a1;
+      border: 1px solid rgba(3, 105, 161, 0.15);
+      margin-left: 8px;
+    }
+
+    .hero-title-prefix {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+      position: relative;
+    }
+
+    .hero-desc {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      max-width: 580px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .btn-main {
+      padding: 16px 32px;
+      background-color: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      box-shadow: 0 4px 14px rgba(124, 58, 237, 0.3);
+      border: 1px solid var(--primary);
+    }
+
+    .btn-main:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
+    }
+
+    .btn-secondary {
+      padding: 16px 32px;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--bg-alt);
+      border-color: var(--text-muted);
+    }
+
+    .hero-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      border-top: 1px solid var(--border);
+      padding-top: 32px;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .meta-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+
+    .meta-value {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .hero-graphic {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Sleek minimalistic card stack graphic representing 10X acceleration */
+    .abstract-shape {
+      width: 280px;
+      height: 280px;
+      border: 2px dashed var(--primary);
+      border-radius: 50%;
+      position: relative;
+      animation: rotate 30s linear infinite;
+    }
+
+    .abstract-card {
+      position: absolute;
+      width: 220px;
+      background: var(--bg-main);
+      border: 1px solid var(--border);
+      padding: 20px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .card-top {
+      top: -15px;
+      left: -15px;
+      border-left: 4px solid var(--primary);
+    }
+
+    .card-bottom {
+      bottom: -15px;
+      right: -15px;
+      border-right: 4px solid var(--primary);
+    }
+
+    .card-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--primary);
+    }
+
+    .card-txt {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* ----------------------------------
+       STAT / AT A GLANCE STRIP
+       ---------------------------------- */
+    .stats-strip {
+      background-color: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 40px 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary);
+      font-family: 'Outfit', sans-serif;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    /* ----------------------------------
+       TRACKS & TOPICS SECTION
+       ---------------------------------- */
+    .section-padding {
+      padding: 100px 0;
+    }
+
+    .section-title-wrapper {
+      text-align: center;
+      margin-bottom: 60px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-subtitle {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 2.4rem;
+      letter-spacing: -1px;
+    }
+
+    .tracks-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .track-card {
+      background-color: var(--bg-main);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .track-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--primary);
+    }
+
+    .track-icon {
+      width: 48px;
+      height: 48px;
+      background-color: var(--primary-light);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .track-icon svg {
+      width: 24px;
+      height: 24px;
+      color: var(--primary);
+    }
+
+    .track-title {
+      font-size: 1.25rem;
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+
+    .topic-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .topic-item {
+      display: flex;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      align-items: flex-start;
+    }
+
+    .topic-item svg {
+      width: 18px;
+      height: 18px;
+      color: var(--primary);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ----------------------------------
+       RESOURCE AFFILIATIONS
+       ---------------------------------- */
+    .resources-section {
+      background-color: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 80px 0;
+    }
+
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+      margin-top: 40px;
+      align-items: center;
+    }
+
+    .resource-badge {
+      background-color: var(--bg-main);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 20px 10px;
+      text-align: center;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      color: var(--text-main);
+      font-size: 1.1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+      transition: var(--transition);
+    }
+
+    .resource-badge:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .resource-badge span {
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ----------------------------------
+       SCHEDULE SECTION
+       ---------------------------------- */
+    .schedule-strip {
+      background-color: var(--bg-main);
+    }
+
+    .schedule-timeline {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      margin-top: 60px;
+      gap: 16px;
+    }
+
+    .schedule-timeline::before {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--border);
+      z-index: 1;
+    }
+
+    .timeline-node {
+      flex: 1;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .node-dot {
+      width: 24px;
+      height: 24px;
+      background-color: var(--bg-main);
+      border: 4px solid var(--primary);
+      border-radius: 50%;
+      margin: 28px auto 16px auto;
+      transition: var(--transition);
+    }
+
+    .timeline-node:hover .node-dot {
+      background-color: var(--primary);
+      transform: scale(1.2);
+    }
+
+    .node-day {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .node-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .node-time {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .schedule-note {
+      text-align: center;
+      margin-top: 48px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* ----------------------------------
+       ORGANIZING COMMITTEE
+       ---------------------------------- */
+    .committee-section {
+      background-color: var(--bg-alt);
+    }
+
+    .committee-group {
+      margin-bottom: 48px;
+    }
+
+    .group-title {
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--primary);
+      border-bottom: 2px solid var(--primary-light);
+      padding-bottom: 8px;
+      margin-bottom: 24px;
+    }
+
+    .committee-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    /* 2 columns for smaller lists */
+    .committee-grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .committee-grid-centered {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .committee-card {
+      background-color: var(--bg-main);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01);
+      transition: var(--transition);
+      min-width: 280px;
+    }
+
+    .committee-card:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow);
+    }
+
+    .member-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .member-role {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .member-inst {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--primary);
+      margin-top: 2px;
+    }
+
+    /* ----------------------------------
+       REGISTRATION & FEES
+       ---------------------------------- */
+    .registration-section {
+      background-color: var(--bg-main);
+    }
+
+    .reg-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .pricing-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .price-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 24px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background-color: var(--bg-alt);
+      transition: var(--transition);
+    }
+
+    .price-card:hover {
+      border-color: var(--primary);
+      background-color: var(--bg-main);
+      box-shadow: var(--shadow);
+    }
+
+    .price-card.featured {
+      background-color: var(--primary-light);
+      border-color: var(--primary);
+      border-left: 5px solid var(--primary);
+    }
+
+    .price-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .price-label {
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .price-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .price-amount {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--primary);
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .accommodation-note {
+      margin-top: 16px;
+      padding: 12px 18px;
+      border-left: 3px solid var(--primary-dark);
+      background-color: var(--bg-alt);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+
+    .qr-container {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      text-align: center;
+      background-color: var(--bg-main);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .qr-image {
+      max-width: 160px;
+      width: 100%;
+      height: auto;
+      margin: 20px 0;
+      border: 1px solid var(--border);
+      padding: 8px;
+      background-color: #fff;
+    }
+
+    .qr-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .qr-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    /* ----------------------------------
+       VENUE & CONTACT FOOTER
+       ---------------------------------- */
+    .venue-section {
+      background-color: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      padding: 80px 0;
+    }
+
+    .venue-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .venue-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+    }
+
+    .venue-address {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .map-container {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      height: 280px;
+      box-shadow: var(--shadow);
+    }
+
+    footer {
+      background-color: var(--text-main);
+      color: #fff;
+      padding: 60px 0 30px 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 48px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-logo {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .footer-desc {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      max-width: 460px;
+    }
+
+    .footer-contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .contact-icon {
+      width: 36px;
+      height: 36px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .contact-icon svg {
+      width: 18px;
+      height: 18px;
+      color: var(--primary);
+    }
+
+    .contact-link {
+      color: #f1f5f9;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .contact-link:hover {
+      color: var(--primary);
+    }
+
+    .contact-label {
+      font-size: 0.7rem;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 30px;
+      font-size: 0.75rem;
+      color: #64748b;
+    }
+
+    .sponsor-credit {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      color: #94a3b8;
+    }
+
+    /* ----------------------------------
+       MOBILE RESPONSIVENESS
+       ---------------------------------- */
+    @media (max-width: 1024px) {
+      .hero h1 { font-size: 2.8rem; }
+      .tracks-grid { grid-template-columns: repeat(2, 1fr); }
+      .resources-grid { grid-template-columns: repeat(3, 1fr); }
+      .committee-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      nav { display: none; } /* Simplified mobile toggle or link block */
+      .menu-toggle { display: flex; }
+      
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        text-align: center;
+      }
+      .badge { margin-left: 0; }
+      .hero-desc { margin-left: auto; margin-right: auto; }
+      .hero-ctas { justify-content: center; }
+      .hero-meta-grid { grid-template-columns: 1fr; gap: 16px; }
+      .hero-graphic { order: -1; margin-bottom: 24px; }
+      
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .tracks-grid { grid-template-columns: 1fr; }
+      
+      .resources-grid { grid-template-columns: repeat(2, 1fr); }
+      
+      .schedule-timeline {
+        flex-direction: column;
+        gap: 32px;
+        padding-left: 24px;
+      }
+      .schedule-timeline::before {
+        left: 12px;
+        top: 0;
+        width: 2px;
+        height: 100%;
+      }
+      .timeline-node {
+        text-align: left;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .node-dot {
+        margin: 0;
+        width: 18px;
+        height: 18px;
+        border-width: 3px;
+      }
+      .node-info {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .committee-grid { grid-template-columns: 1fr; }
+      .committee-grid-2 { grid-template-columns: 1fr; }
+      
+      .reg-grid { grid-template-columns: 1fr; gap: 32px; }
+      .venue-grid { grid-template-columns: 1fr; gap: 32px; }
+      
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER & NAVIGATION -->
+  <header id="header">
+    <div class="container nav-wrapper">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <img src="bvvs_logo.jpg" alt="BVVS Logo" style="height: 48px; width: auto; object-fit: contain;">
+        <div class="logo-block">
+          <span class="logo-title">AIEMS</span>
+          <span class="logo-subtitle">Amruta Institute</span>
+        </div>
+      </div>
+      <nav>
+        <a href="#about">At a Glance</a>
+        <a href="#topics">Tracks</a>
+        <a href="#schedule">Timeline</a>
+        <a href="#committee">Committee</a>
+        <a href="#registration">Fees</a>
+        <a href="#venue">Venue</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSf77bg5BUFTEq468Jpt-_-7yg6oVgvXRDgPNy3cwXEMqigQ_w/viewform?usp=header" target="_blank" class="nav-btn">Register Online</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="slide-in-left">
+          <span class="badge">National FDP 2026</span>
+          <span class="badge badge-ieee">In Association with IEEE</span>
+          <div class="hero-title-prefix">Department of AI&ML, CSE & ECE Presents</div>
+          <h1>10X-AI <span>RAR</span></h1>
+          <p class="hero-desc">10X - AI Research Acceleration & Revolutions. Accelerate your academic research and master generative models in a five-day intensive hybrid program.</p>
+          <div class="hero-ctas">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf77bg5BUFTEq468Jpt-_-7yg6oVgvXRDgPNy3cwXEMqigQ_w/viewform?usp=header" target="_blank" class="btn-main">Register Now</a>
+            <a href="#topics" class="btn-secondary">Explore Tracks</a>
+          </div>
+          <div class="hero-meta-grid">
+            <div class="meta-item">
+              <span class="meta-label">Dates</span>
+              <span class="meta-value">27 - 31 July 2026</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Format</span>
+              <span class="meta-value">Hybrid Mode</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Venue</span>
+              <span class="meta-value">Main Auditorium, AIEMS Bengaluru</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-graphic slide-in-right delay-200">
+          <div class="abstract-shape"></div>
+          <div class="abstract-card card-top">
+            <span class="card-title">Day-Wise Plan</span>
+            <span class="card-txt">5 Days, 10 Core AI Topics</span>
+          </div>
+          <div class="abstract-card card-bottom">
+            <span class="card-title">Affiliated Speakers</span>
+            <span class="card-txt">IISc, IIT, Samsung, TCS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS / AT A GLANCE STRIP -->
+  <section id="about" class="stats-strip reveal">
+    <div class="container">
+      <div class="stats-grid">
+        <div>
+          <div class="stat-number">5</div>
+          <div class="stat-label">Intensive Days</div>
+        </div>
+        <div>
+          <div class="stat-number">Hybrid</div>
+          <div class="stat-label">Flexible Delivery</div>
+        </div>
+        <div>
+          <div class="stat-number">IEEE</div>
+          <div class="stat-label">Co-Sponsored Activity</div>
+        </div>
+        <div>
+          <div class="stat-number">6+</div>
+          <div class="stat-label">Elite Resource Centers</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRACKS & TOPICS SECTION -->
+  <section id="topics" class="section-padding">
+    <div class="container">
+      <div class="section-title-wrapper reveal">
+        <span class="section-subtitle">Curriculum Overview</span>
+        <h2 class="section-title">Program Tracks & Core Topics</h2>
+      </div>
+      <div class="tracks-grid">
+        
+        <!-- Track 1 -->
+        <div class="track-card reveal">
+          <div class="track-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 21l8.904-4.474m-8.904-.622L4 16.25M12 3v1.5M12 18.75V21m6.42-13.42l-1.06 1.06m-9.36 9.36l-1.06 1.06M21 12h-1.5M4.5 12H3m14.07 5.07l-.93-.93M7.05 7.05l-.93-.93" />
+            </svg>
+          </div>
+          <h3 class="track-title">Core AI & Emerging Tech</h3>
+          <ul class="topic-list">
+            <li class="topic-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>Foundations of Deep Learning & Neural Networks</span>
+            </li>
+            <li class="topic-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>Large Language Models & GenAI Foundations</span>
+            </li>
+            <li class="topic-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>Agentic AI & Multi-Agent Workflows</span>
+            </li>
+            <li class="topic-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>Advanced RAG & Vector Knowledge Maps</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Track 2 -->
+        <div class="track-card reveal delay-100">
+          <div class="track-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.67 2.67 0 0021 17.25l-5.83-5.83m-3.75 3.75L7.25 19A2.67 2.67 0 013 15.25l3.83-3.83m3.75 3.75l-1.17-1.17M15.17 11.42L19 7.25A2.67 2.67 0 0015.25 3l-3.83 3.83m3.75 3.75l-1.17-1.17m-1.17 1.17L7.25 7.25A2.67 2.67 0 003 11.08L6.83 15m3.75-3.75L15 7.25A2.67 2.67 0 0119.25 11l-3.83 3.83M10.5 13.5L13.5 10.5" />
+            </svg>
+          </div>
+          <h3 class="track-title">AI in Applied Engineering</h3>
+          <ul class="topic-list">
+            <li class="topic-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>AI-Driven Software & Code Assistants</span>
+            </li>
+            <li class="topic-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>Machine Learning in Embedded & Communication Systems</span>
+            </li>
+            <li class="topic-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>Intelligent Automation & Robotic Controls</span>
+            </li>
+            <li class="topic-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>Industrial AI & Smart Sensing Technologies</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Track 3 -->
+        <div class="track-card reveal delay-200">
+          <div class="track-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+            </svg>
+          </div>
+          <h3 class="track-title">Research & Career Growth</h3>
+          <ul class="topic-list">
+            <li class="topic-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>Academic Writing & literature Mining with AI</span>
+            </li>
+            <li class="topic-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>IPR, Patenting & Funding Proposals in the AI Era</span>
+            </li>
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- ELITE AFFILIATIONS -->
+  <section class="resources-section">
+    <div class="container">
+      <div class="section-title-wrapper reveal">
+        <span class="section-subtitle">Speaker Affiliations</span>
+        <h2 class="section-title">Resource Persons Representing</h2>
+      </div>
+      <div class="resources-grid reveal">
+        <div class="resource-badge">IISc<span>Bangalore</span></div>
+        <div class="resource-badge">IITD<span>Delhi</span></div>
+        <div class="resource-badge">IIITB<span>Bangalore</span></div>
+        <div class="resource-badge">NITJ<span>Jalandhar</span></div>
+        <div class="resource-badge">Samsung<span>Research</span></div>
+        <div class="resource-badge">TCS<span>Innovation</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHEDULETIMELINE SECTION -->
+  <section id="schedule" class="section-padding schedule-strip">
+    <div class="container">
+      <div class="section-title-wrapper reveal">
+        <span class="section-subtitle">Weekly Schedule</span>
+        <h2 class="section-title">Program Timeline</h2>
+      </div>
+      
+      <div class="schedule-timeline reveal">
+        <div class="timeline-node">
+          <span class="node-day">Day 1</span>
+          <div class="node-dot"></div>
+          <div class="node-info">
+            <h4 class="node-title">27 July 2026</h4>
+            <span class="node-time">9:15 AM - 4:15 PM</span>
+          </div>
+        </div>
+        <div class="timeline-node">
+          <span class="node-day">Day 2</span>
+          <div class="node-dot"></div>
+          <div class="node-info">
+            <h4 class="node-title">28 July 2026</h4>
+            <span class="node-time">9:15 AM - 4:15 PM</span>
+          </div>
+        </div>
+        <div class="timeline-node">
+          <span class="node-day">Day 3</span>
+          <div class="node-dot"></div>
+          <div class="node-info">
+            <h4 class="node-title">29 July 2026</h4>
+            <span class="node-time">9:15 AM - 4:15 PM</span>
+          </div>
+        </div>
+        <div class="timeline-node">
+          <span class="node-day">Day 4</span>
+          <div class="node-dot"></div>
+          <div class="node-info">
+            <h4 class="node-title">30 July 2026</h4>
+            <span class="node-time">9:15 AM - 4:15 PM</span>
+          </div>
+        </div>
+        <div class="timeline-node">
+          <span class="node-day">Day 5</span>
+          <div class="node-dot"></div>
+          <div class="node-info">
+            <h4 class="node-title">31 July 2026</h4>
+            <span class="node-time">9:15 AM - 4:15 PM</span>
+          </div>
+        </div>
+      </div>
+      
+      <p class="schedule-note">*Note: Detailed day-wise session schedules and topics will be emailed directly to registered participants.</p>
+    </div>
+  </section>
+
+  <!-- ORGANIZING COMMITTEE -->
+  <section id="committee" class="section-padding committee-section">
+    <div class="container">
+      <div class="section-title-wrapper reveal">
+        <span class="section-subtitle">Leadership & Execution</span>
+        <h2 class="section-title">Organizing Committee</h2>
+      </div>
+
+      <!-- Chief Patrons -->
+      <div class="committee-group reveal">
+        <h3 class="group-title">Chief Patrons</h3>
+        <div class="committee-grid-centered">
+          <div class="committee-card">
+            <div class="member-name">Dr. Veeranna C Charantimath</div>
+            <div class="member-role">Chairman</div>
+            <div class="member-inst">BVVS, Bagalkote</div>
+          </div>
+          <div class="committee-card">
+            <div class="member-name">Shri. Mahesh N Athani</div>
+            <div class="member-role">Hon. Secretary</div>
+            <div class="member-inst">BVVS, Bagalkote</div>
+          </div>
+          <div class="committee-card">
+            <div class="member-name">Dr. Vidyashankar S</div>
+            <div class="member-role">Honorable Vice-Chancellor</div>
+            <div class="member-inst">VTU, Belagavi</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Patrons -->
+      <div class="committee-group reveal">
+        <h3 class="group-title">Patrons</h3>
+        <div class="committee-grid-centered">
+          <div class="committee-card">
+            <div class="member-name">Shri. Mahantesh S Shettar</div>
+            <div class="member-role">Chairman</div>
+            <div class="member-inst">AIEMS, Bidadi Bengaluru</div>
+          </div>
+          <div class="committee-card">
+            <div class="member-name">Dr. Prasad Rampure</div>
+            <div class="member-role">Registrar</div>
+            <div class="member-inst">VTU, Belagavi</div>
+          </div>
+          <div class="committee-card">
+            <div class="member-name">Dr. Ujwal U J</div>
+            <div class="member-role">Registrar (Evaluation)</div>
+            <div class="member-inst">VTU, Belagavi</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Co-Patrons -->
+      <div class="committee-group reveal">
+        <h3 class="group-title">Co-Patrons</h3>
+        <div class="committee-grid-2 committee-grid">
+          <div class="committee-card">
+            <div class="member-name">Dr. Santosh M Muranal</div>
+            <div class="member-role">Principal</div>
+            <div class="member-inst">AIEMS, Bengaluru</div>
+          </div>
+          <div class="committee-card">
+            <div class="member-name">Dr. Rajeshwar Kadadevaramath</div>
+            <div class="member-role">Dean Academics</div>
+            <div class="member-inst">AIEMS, Bengaluru</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Convenor & Co-Convenors -->
+      <div class="committee-group reveal">
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 32px;" class="reg-grid">
+          <div>
+            <h3 class="group-title">Convenor</h3>
+            <div class="committee-card" style="width: 100%;">
+              <div class="member-name">Dr. M S Nagananda</div>
+              <div class="member-role">Professor, Dept. of AI-ML</div>
+              <div class="member-inst">AIEMS, Bengaluru (Ph.D, IIT Delhi)</div>
+            </div>
+          </div>
+          <div>
+            <h3 class="group-title">Co-Convenors</h3>
+            <div class="committee-grid committee-grid-2">
+              <div class="committee-card">
+                <div class="member-name">Mr. Shreyas S</div>
+                <div class="member-role">HOD, Department of AIML</div>
+                <div class="member-inst">AIEMS, Bengaluru</div>
+              </div>
+              <div class="committee-card">
+                <div class="member-name">Dr. Sridhar S. B.</div>
+                <div class="member-role">HOD, Department of CSE</div>
+                <div class="member-inst">AIEMS, Bengaluru</div>
+              </div>
+              <div class="committee-card" style="grid-column: span 2;" class="full-width-card">
+                <div class="member-name">Dr. Veeresh Patil</div>
+                <div class="member-role">HOD, Department of ECE</div>
+                <div class="member-inst">AIEMS, Bengaluru</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- REGISTRATION & FEES -->
+  <section id="registration" class="section-padding registration-section">
+    <div class="container">
+      <div class="section-title-wrapper reveal">
+        <span class="section-subtitle">Enrollment Details</span>
+        <h2 class="section-title">Registration Fees & Portal</h2>
+      </div>
+
+      <div class="reg-grid">
+        <div class="pricing-cards slide-in-left">
+          
+          <div class="price-card featured">
+            <div class="price-info">
+              <span class="price-label">Early Bird Registration</span>
+              <span class="price-sub">Available from 16/06/2026 to 15/07/2026</span>
+            </div>
+            <span class="price-amount">₹450</span>
+          </div>
+
+          <div class="price-card">
+            <div class="price-info">
+              <span class="price-label">Regular Registration</span>
+              <span class="price-sub">Available from 16/07/2026 to 25/07/2026</span>
+            </div>
+            <span class="price-amount">₹750</span>
+          </div>
+
+          <div class="price-card">
+            <div class="price-info">
+              <span class="price-label">Spot Registration</span>
+              <span class="price-sub">Register at the venue on 27/07/2026</span>
+            </div>
+            <span class="price-amount">₹1,000</span>
+          </div>
+
+          <div class="accommodation-note">
+            <strong>Food & Accommodation:</strong> Accommodation and dining facilities are available on-campus at a subsidized rate of ₹250/- per day.
+          </div>
+
+        </div>
+
+        <div class="qr-container slide-in-right delay-200">
+          <span class="qr-title">Scan to Register</span>
+          <span class="qr-desc">Scan the QR code below using your phone or click the button to open the Google Form.</span>
+          <img src="qr_code.png" alt="Registration QR Code" class="qr-image">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSf77bg5BUFTEq468Jpt-_-7yg6oVgvXRDgPNy3cwXEMqigQ_w/viewform?usp=header" target="_blank" class="btn-main" style="width: 100%;">Open Registration Form</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VENUE & DIRECTION -->
+  <section id="venue" class="venue-section">
+    <div class="container">
+      <div class="venue-grid">
+        <div class="venue-info slide-in-left">
+          <span class="badge">Location Details</span>
+          <h3>AIEMS Bidadi Campus</h3>
+          <p class="venue-address">
+            <strong>AIEMS campus:</strong> Bidadi, Near Toyota Kirloskar Motors,<br>
+            Industrial Town, Timmegoudanadoddi,<br>
+            Karnataka 562109
+          </p>
+          <a href="https://maps.google.com/?q=Amruta+Institute+of+Engineering+and+Management+Sciences" target="_blank" class="btn-secondary">Get Directions in Google Maps</a>
+        </div>
+        <div class="map-container slide-in-right delay-200">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.5752390231947!2d77.38883907507474!3d12.87063298743513!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae40624bb09e25%3A0xe10471b0598a72e8!2sAmruta%20Institute%20of%20Engineering%20%26%20Management%20Sciences!5e0!3m2!1sen!2sin!4v1718553600000!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER & CONTACT -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">10X-AI RAR</div>
+          <p class="footer-desc">A National Faculty Development Program organized by the Department of Artificial Intelligence & Machine Learning, Computer Science & Engineering, and Electronics & Communication Engineering at AIEMS, Bengaluru.</p>
+        </div>
+        <div>
+          <div class="footer-contacts">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.14-4.117-6.942-6.942l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                </svg>
+              </div>
+              <div>
+                <span class="contact-label">Call Coordinator (Mrs. Shilpa Devaraddi)</span>
+                <div>
+                  <a href="tel:+918762373361" class="contact-link">+91-8762373361</a> | 
+                  <a href="tel:+919483431039" class="contact-link">+91-9483431039</a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                </svg>
+              </div>
+              <div>
+                <span class="contact-label">Email Queries</span>
+                <div>
+                  <a href="mailto:fdp@aiems.edu.in" class="contact-link">fdp@aiems.edu.in</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <span>&copy; 2026 AIEMS Department of AI & Machine Learning. All Rights Reserved.</span>
+        <div class="sponsor-credit">
+          Sponsor: Swami Vivekananda Voluntary Blood Center
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LIGHTWEIGHT INTERSECTION OBSERVER FOR ANIMATIONS -->
+  <script>
+    // Header shadow on scroll
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Intersection Observer for scroll animations
+    const revealElements = document.querySelectorAll('.reveal, .slide-in-left, .slide-in-right');
+    
+    const observerOptions = {
+      root: null, // viewport
+      threshold: 0.1, // trigger when 10% is visible
+      rootMargin: '0px 0px -50px 0px' // offset to trigger slightly before coming into view
+    };
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          // Once animated, we don't need to observe it anymore
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    revealElements.forEach(el => {
+      revealObserver.observe(el);
+    });
+
+    // Fallback if JavaScript is slow: trigger all if screen height is very large
+    window.addEventListener('load', () => {
+      // Small delay to make sure observer binds first
+      setTimeout(() => {
+        // Force active on elements already in viewport
+        revealElements.forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight) {
+            el.classList.add('active');
+          }
+        });
+      }, 200);
+    });
+  </script>
+</body>
+</html>
