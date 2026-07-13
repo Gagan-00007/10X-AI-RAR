@@ -386,6 +386,68 @@
       z-index: 2;
     }
 
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 60px;
+      align-items: center;
+      margin-bottom: 48px;
+    }
+
+    .hero-tools-side {
+      position: relative;
+      height: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Floating tags cloud styling */
+    .tool-tag-floating {
+      position: absolute;
+      padding: 10px 20px;
+      background: rgba(26, 26, 26, 0.45);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      cursor: default;
+      transition: all 0.3s var(--ease-spring);
+      animation: float-slow 6s ease-in-out infinite;
+      white-space: nowrap;
+    }
+
+    .tool-tag-floating:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(200, 255, 0, 0.08);
+      box-shadow: 0 0 25px var(--accent-glow);
+      transform: scale(1.1) translateY(-5px);
+      z-index: 10;
+    }
+
+    /* Positions for tools tag cloud to look organic and scattered */
+    .tool-tag-floating:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; animation-duration: 6s; }
+    .tool-tag-floating:nth-child(2) { top: 22%; right: 5%; animation-delay: 1.5s; animation-duration: 8s; }
+    .tool-tag-floating:nth-child(3) { top: 40%; left: 0%; animation-delay: 3s; animation-duration: 7s; }
+    .tool-tag-floating:nth-child(4) { top: 58%; right: 10%; animation-delay: 0.5s; animation-duration: 9s; }
+    .tool-tag-floating:nth-child(5) { top: 78%; left: 15%; animation-delay: 2.2s; animation-duration: 6.5s; }
+    .tool-tag-floating:nth-child(6) { top: 15%; right: 40%; animation-delay: 4.1s; animation-duration: 7.5s; }
+    .tool-tag-floating:nth-child(7) { top: 48%; right: 45%; animation-delay: 1.8s; animation-duration: 8.5s; }
+    .tool-tag-floating:nth-child(8) { top: 82%; right: 15%; animation-delay: 2.8s; animation-duration: 7s; }
+    .tool-tag-floating:nth-child(9) { top: 32%; left: 35%; animation-delay: 1.0s; animation-duration: 6.8s; }
+    .tool-tag-floating:nth-child(10) { top: 68%; left: 42%; animation-delay: 3.5s; animation-duration: 7.2s; }
+
+    @keyframes float-slow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
     .hero-badge-row {
       display: flex;
       gap: 12px;
@@ -1389,6 +1451,8 @@
        RESPONSIVE
        ======================================== */
     @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 30px; margin-bottom: 32px; }
+      .hero-tools-side { height: 320px; }
       .speakers-grid { grid-template-columns: repeat(3, 1fr); }
       .outcomes-grid { grid-template-columns: repeat(2, 1fr); }
       .committee-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1398,6 +1462,7 @@
     @media (max-width: 768px) {
       body { cursor: auto; }
       .cursor, .cursor-dot { display: none; }
+      .hero-tools-side { display: none; }
 
       .nav-links { display: none; }
       .menu-toggle { display: flex; }
@@ -1429,12 +1494,508 @@
       .hero-cta-row .btn-outline { width: 100%; justify-content: center; }
       .about-stats-row { grid-template-columns: 1fr; }
     }
+
+    /* ========================================
+       FLOATING AI TOOLS PANEL
+       ======================================== */
+    .tools-fab {
+      position: fixed;
+      right: 24px;
+      bottom: 80px;
+      z-index: 5000;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+    }
+
+    .tools-panel {
+      width: 320px;
+      background: rgba(15, 15, 15, 0.92);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(200, 255, 0, 0.18);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(200,255,0,0.06);
+      transform: translateY(20px) scale(0.95);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-spring);
+      max-height: 480px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tools-panel.open {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .tools-panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px 0;
+      flex-shrink: 0;
+    }
+
+    .tools-panel-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tools-panel-title .live-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulseDot 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.6); }
+    }
+
+    .tools-panel-close {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .tools-panel-close:hover {
+      background: rgba(200,255,0,0.12);
+      border-color: var(--accent);
+    }
+
+    .tools-panel-close svg {
+      width: 12px;
+      height: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Tabs */
+    .tools-tabs {
+      display: flex;
+      gap: 4px;
+      padding: 12px 20px 0;
+      flex-shrink: 0;
+    }
+
+    .tools-tab {
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      color: var(--text-muted);
+      background: transparent;
+      border: 1px solid transparent;
+    }
+
+    .tools-tab.active {
+      background: rgba(200,255,0,0.1);
+      color: var(--accent);
+      border-color: rgba(200,255,0,0.25);
+    }
+
+    .tools-tab:hover:not(.active) {
+      background: rgba(255,255,255,0.04);
+      color: var(--text-dim);
+    }
+
+    /* Panel Body */
+    .tools-panel-body {
+      overflow-y: auto;
+      padding: 16px 20px 20px;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .tools-panel-body::-webkit-scrollbar {
+      width: 4px;
+    }
+    .tools-panel-body::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .tools-panel-body::-webkit-scrollbar-thumb {
+      background: rgba(200,255,0,0.2);
+      border-radius: 4px;
+    }
+
+    /* Tools Tab Content */
+    .tool-category-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      margin: 16px 0 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tool-category-label:first-child {
+      margin-top: 0;
+    }
+
+    .tool-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      margin-bottom: 4px;
+      cursor: default;
+      transition: background 0.2s;
+    }
+
+    .tool-item:hover {
+      background: rgba(255,255,255,0.04);
+    }
+
+    .tool-item-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      font-weight: 700;
+    }
+
+    .tool-item-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .tool-item-name {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .tool-item-desc {
+      font-size: 0.66rem;
+      color: var(--text-muted);
+      margin-top: 1px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .tool-item-badge {
+      font-size: 0.58rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 2px 7px;
+      border-radius: 20px;
+      flex-shrink: 0;
+    }
+
+    .badge-ai { background: rgba(200,255,0,0.12); color: var(--accent); }
+    .badge-research { background: rgba(100,160,255,0.12); color: #64a0ff; }
+    .badge-code { background: rgba(180,100,255,0.12); color: #b464ff; }
+    .badge-write { background: rgba(255,140,60,0.12); color: #ff8c3c; }
+
+    /* Log Tab Content */
+    .log-container {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.68rem;
+      line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .log-entry {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      animation: logFadeIn 0.4s ease-out;
+    }
+
+    @keyframes logFadeIn {
+      from { opacity: 0; transform: translateX(-6px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    .log-time {
+      color: var(--text-muted);
+      flex-shrink: 0;
+      font-size: 0.62rem;
+      padding-top: 1px;
+    }
+
+    .log-icon {
+      flex-shrink: 0;
+      font-size: 0.72rem;
+      padding-top: 1px;
+    }
+
+    .log-text {
+      color: var(--text-dim);
+      flex: 1;
+    }
+
+    .log-text .log-tool {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .log-text .log-action {
+      color: #64a0ff;
+    }
+
+    .log-status-ok   { color: #5ddb7a; }
+    .log-status-warn { color: #ffcc44; }
+    .log-status-info { color: #64a0ff; }
+
+    .log-empty {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      padding: 24px 0;
+      font-style: italic;
+    }
+
+    /* FAB Toggle Button */
+    .tools-toggle-btn {
+      width: 52px;
+      height: 52px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 8px 30px rgba(200,255,0,0.4);
+      transition: transform 0.3s var(--ease-spring), box-shadow 0.3s;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .tools-toggle-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 40px rgba(200,255,0,0.55);
+    }
+
+    .tools-toggle-btn svg {
+      width: 22px;
+      height: 22px;
+      color: #0a0a0a;
+      transition: transform 0.3s var(--ease-spring);
+    }
+
+    .tools-toggle-btn.open svg {
+      transform: rotate(45deg);
+    }
+
+    .tools-toggle-badge {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background: #ff4444;
+      color: white;
+      font-size: 0.55rem;
+      font-weight: 800;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--bg);
+      animation: badgePop 0.4s var(--ease-spring);
+    }
+
+    @keyframes badgePop {
+      from { transform: scale(0); }
+      to   { transform: scale(1); }
+    }
+
+    /* Mobile: hide on very small screens */
+    @media (max-width: 480px) {
+      .tools-fab { right: 12px; bottom: 60px; }
+      .tools-panel { width: calc(100vw - 32px); }
+    }
   </style>
 </head>
 <body>
 
   <!-- BACKGROUND GRID -->
   <div class="bg-grid"></div>
+
+  <!-- ============================
+       FLOATING AI TOOLS PANEL
+       ============================ -->
+  <div class="tools-fab" id="toolsFab">
+    <!-- Panel -->
+    <div class="tools-panel" id="toolsPanel">
+      <div class="tools-panel-header">
+        <div class="tools-panel-title">
+          <span class="live-dot"></span>
+          AI Tools
+        </div>
+        <div class="tools-panel-close" id="toolsPanelClose" data-hoverable>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <path d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="tools-tabs">
+        <button class="tools-tab active" id="tabTools" data-hoverable>Tools</button>
+        <button class="tools-tab" id="tabLog" data-hoverable>Log <span id="logBadgeTab" style="display:none;background:rgba(200,255,0,0.2);color:var(--accent);padding:1px 6px;border-radius:10px;font-size:0.58rem;"></span></button>
+      </div>
+
+      <!-- Tools Content -->
+      <div class="tools-panel-body" id="toolsContent">
+
+        <div class="tool-category-label">🤖 AI Assistants</div>
+
+        <div class="tool-item">
+          <div class="tool-item-icon" style="background:rgba(100,200,100,0.12);color:#64c864;">G</div>
+          <div class="tool-item-info">
+            <div class="tool-item-name">Gemini 1.5 Pro</div>
+            <div class="tool-item-desc">Google's multimodal AI model</div>
+          </div>
+          <span class="tool-item-badge badge-ai">AI</span>
+        </div>
+
+        <div class="tool-item">
+          <div class="tool-item-icon" style="background:rgba(180,120,255,0.12);color:#b478ff;">C</div>
+          <div class="tool-item-info">
+            <div class="tool-item-name">Claude 3.5 Sonnet</div>
+            <div class="tool-item-desc">Anthropic's research assistant</div>
+          </div>
+          <span class="tool-item-badge badge-ai">AI</span>
+        </div>
+
+        <div class="tool-item">
+          <div class="tool-item-icon" style="background:rgba(16,163,127,0.12);color:#10a37f;">O</div>
+          <div class="tool-item-info">
+            <div class="tool-item-name">ChatGPT</div>
+            <div class="tool-item-desc">OpenAI conversational AI</div>
+          </div>
+          <span class="tool-item-badge badge-ai">AI</span>
+        </div>
+
+        <div class="tool-category-label">📚 Research Tools</div>
+
+        <div class="tool-item">
+          <div class="tool-item-icon" style="background:rgba(100,160,255,0.12);color:#64a0ff;">R</div>
+          <div class="tool-item-info">
+            <div class="tool-item-name">Research Rabbit</div>
+            <div class="tool-item-desc">AI-powered paper discovery</div>
+          </div>
+          <span class="tool-item-badge badge-research">Research</span>
+        </div>
+
+        <div class="tool-item">
+          <div class="tool-item-icon" style="background:rgba(200,100,60,0.12);color:#c8643c;">Z</div>
+          <div class="tool-item-info">
+            <div class="tool-item-name">Zotero</div>
+            <div class="tool-item-desc">Reference management system</div>
+          </div>
+          <span class="tool-item-badge badge-research">Research</span>
+        </div>
+
+        <div class="tool-item">
+          <div class="tool-item-icon" style="background:rgba(80,140,255,0.12);color:#508cff;">CP</div>
+          <div class="tool-item-info">
+            <div class="tool-item-name">Connected Papers</div>
+            <div class="tool-item-desc">Visual citation graph explorer</div>
+          </div>
+          <span class="tool-item-badge badge-research">Research</span>
+        </div>
+
+        <div class="tool-item">
+          <div class="tool-item-icon" style="background:rgba(180,60,60,0.12);color:#b43c3c;">M</div>
+          <div class="tool-item-info">
+            <div class="tool-item-name">Mendeley</div>
+            <div class="tool-item-desc">Reference & citation manager</div>
+          </div>
+          <span class="tool-item-badge badge-research">Research</span>
+        </div>
+
+        <div class="tool-category-label">💻 Coding & Data</div>
+
+        <div class="tool-item">
+          <div class="tool-item-icon" style="background:rgba(55,118,171,0.12);color:#3776ab;">Py</div>
+          <div class="tool-item-info">
+            <div class="tool-item-name">Python</div>
+            <div class="tool-item-desc">Data science & ML scripting</div>
+          </div>
+          <span class="tool-item-badge badge-code">Code</span>
+        </div>
+
+        <div class="tool-item">
+          <div class="tool-item-icon" style="background:rgba(100,170,255,0.12);color:#64aaff;">R</div>
+          <div class="tool-item-info">
+            <div class="tool-item-name">R Programming</div>
+            <div class="tool-item-desc">Statistical computing & plots</div>
+          </div>
+          <span class="tool-item-badge badge-code">Code</span>
+        </div>
+
+        <div class="tool-category-label">🤗 ML Platforms</div>
+
+        <div class="tool-item">
+          <div class="tool-item-icon" style="background:rgba(255,160,50,0.12);color:#ffa032;">HF</div>
+          <div class="tool-item-info">
+            <div class="tool-item-name">Hugging Face</div>
+            <div class="tool-item-desc">Open-source ML models & datasets</div>
+          </div>
+          <span class="tool-item-badge badge-ai">AI</span>
+        </div>
+
+      </div>
+
+      <!-- Log Content -->
+      <div class="tools-panel-body" id="logContent" style="display:none;">
+        <div class="log-container" id="logFeed">
+          <div class="log-empty" id="logEmpty">Initializing session log...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toggle Button -->
+    <div class="tools-toggle-btn" id="toolsToggleBtn" data-hoverable>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+      </svg>
+      <span class="tools-toggle-badge" id="toolsToggleBadge" style="display:none;">!</span>
+    </div>
+  </div>
 
   <!-- CUSTOM CURSOR -->
   <div class="cursor" id="cursor"></div>
@@ -1477,32 +2038,49 @@
        ============================ -->
   <section class="hero" id="hero">
     <div class="container hero-content">
-      <div class="hero-badge-row reveal">
-        <span class="hero-badge hero-badge--accent">
-          <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>
-          National FDP 2026
-        </span>
-        <span class="hero-badge">VTU · VTPC · IEEE</span>
-        <span class="hero-badge">Hybrid Mode</span>
-      </div>
+      <div class="hero-grid">
+        <div class="hero-text-side">
+          <div class="hero-badge-row reveal">
+            <span class="hero-badge hero-badge--accent">
+              <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>
+              National FDP 2026
+            </span>
+            <span class="hero-badge">VTU · VTPC · IEEE</span>
+            <span class="hero-badge">Hybrid Mode</span>
+          </div>
 
-      <p class="hero-overline reveal delay-1">Department of AI&ML, CSE & ECE — AIEMS Bengaluru</p>
+          <p class="hero-overline reveal delay-1">Department of AI&ML, CSE & ECE — AIEMS Bengaluru</p>
 
-      <h1 class="hero-title reveal delay-2">
-        10X<span class="accent">—</span>AI<br>
-        <span class="italic">Research</span> <span class="accent">RAR</span>
-      </h1>
+          <h1 class="hero-title reveal delay-2">
+            10X<span class="accent">—</span>AI<br>
+            <span class="italic">Research</span> <span class="accent">RAR</span>
+          </h1>
 
-      <p class="hero-subtitle reveal delay-3">
-        AI Research Acceleration & Revolutions — Scope and Future Ahead. Five days of intensive sessions, hands-on training, and expert-led workshops.
-      </p>
+          <p class="hero-subtitle reveal delay-3">
+            AI Research Acceleration & Revolutions — Scope and Future Ahead. Five days of intensive sessions, hands-on training, and expert-led workshops.
+          </p>
 
-      <div class="hero-cta-row reveal delay-4">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSf77bg5BUFTEq468Jpt-_-7yg6oVgvXRDgPNy3cwXEMqigQ_w/viewform?usp=header" target="_blank" class="btn-primary" data-hoverable>
-          Register Now
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="#topics" class="btn-outline" data-hoverable>Explore Program</a>
+          <div class="hero-cta-row reveal delay-4">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf77bg5BUFTEq468Jpt-_-7yg6oVgvXRDgPNy3cwXEMqigQ_w/viewform?usp=header" target="_blank" class="btn-primary" data-hoverable>
+              Register Now
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#topics" class="btn-outline" data-hoverable>Explore Program</a>
+          </div>
+        </div>
+
+        <div class="hero-tools-side reveal delay-3">
+          <span class="tool-tag-floating" data-hoverable>Gemini 1.5 Pro</span>
+          <span class="tool-tag-floating" data-hoverable>Research Rabbit</span>
+          <span class="tool-tag-floating" data-hoverable>Zotero</span>
+          <span class="tool-tag-floating" data-hoverable>Claude 3.5 Sonnet</span>
+          <span class="tool-tag-floating" data-hoverable>Python</span>
+          <span class="tool-tag-floating" data-hoverable>R Programming</span>
+          <span class="tool-tag-floating" data-hoverable>Connected Papers</span>
+          <span class="tool-tag-floating" data-hoverable>Hugging Face</span>
+          <span class="tool-tag-floating" data-hoverable>ChatGPT</span>
+          <span class="tool-tag-floating" data-hoverable>Mendeley</span>
+        </div>
       </div>
 
       <div class="hero-meta reveal delay-5">
@@ -2427,6 +3005,166 @@
         }
       });
     });
+
+    // ========================================
+    // FLOATING AI TOOLS PANEL
+    // ========================================
+    (function() {
+      const toggleBtn   = document.getElementById('toolsToggleBtn');
+      const panel       = document.getElementById('toolsPanel');
+      const closeBtn    = document.getElementById('toolsPanelClose');
+      const tabTools    = document.getElementById('tabTools');
+      const tabLog      = document.getElementById('tabLog');
+      const toolsContent = document.getElementById('toolsContent');
+      const logContent   = document.getElementById('logContent');
+      const logFeed      = document.getElementById('logFeed');
+      const logEmpty     = document.getElementById('logEmpty');
+      const toggleBadge  = document.getElementById('toolsToggleBadge');
+      const logBadgeTab  = document.getElementById('logBadgeTab');
+
+      let isOpen = false;
+      let unreadLogs = 0;
+      let logCount = 0;
+
+      // Open / close panel
+      function openPanel() {
+        isOpen = true;
+        panel.classList.add('open');
+        toggleBtn.classList.add('open');
+        toggleBadge.style.display = 'none';
+        unreadLogs = 0;
+      }
+      function closePanel() {
+        isOpen = false;
+        panel.classList.remove('open');
+        toggleBtn.classList.remove('open');
+      }
+
+      toggleBtn.addEventListener('click', () => isOpen ? closePanel() : openPanel());
+      closeBtn.addEventListener('click', closePanel);
+
+      // Tabs
+      tabTools.addEventListener('click', () => {
+        tabTools.classList.add('active');
+        tabLog.classList.remove('active');
+        toolsContent.style.display = 'block';
+        logContent.style.display = 'none';
+      });
+      tabLog.addEventListener('click', () => {
+        tabLog.classList.add('active');
+        tabTools.classList.remove('active');
+        logContent.style.display = 'block';
+        toolsContent.style.display = 'none';
+        // mark as read
+        unreadLogs = 0;
+        logBadgeTab.style.display = 'none';
+        // scroll to bottom
+        setTimeout(() => { logContent.scrollTop = logContent.scrollHeight; }, 50);
+      });
+
+      // ---- LOG SYSTEM ----
+      function pad(n) { return String(n).padStart(2, '0'); }
+      function getTime() {
+        const d = new Date();
+        return pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds());
+      }
+
+      const logEvents = [
+        { icon: '🚀', text: '<span class="log-tool">Session Started</span> — 10X-AI RAR Research Environment', status: 'ok' },
+        { icon: '🤖', text: '<span class="log-tool">Gemini 1.5 Pro</span> <span class="log-action">initialized</span> · multimodal context loaded', status: 'ok' },
+        { icon: '📖', text: '<span class="log-tool">Research Rabbit</span> scanning literature network...', status: 'info' },
+        { icon: '✅', text: 'Found <span class="log-tool">247 papers</span> · 12 high-relevance matches', status: 'ok' },
+        { icon: '🦙', text: '<span class="log-tool">Claude 3.5 Sonnet</span> <span class="log-action">analyzing</span> abstract corpus', status: 'info' },
+        { icon: '📌', text: '<span class="log-tool">Zotero</span> syncing 34 references · 3 collections updated', status: 'ok' },
+        { icon: '💻', text: '<span class="log-tool">Python 3.11</span> environment ready · pandas, sklearn loaded', status: 'ok' },
+        { icon: '🗺️', text: '<span class="log-tool">Connected Papers</span> generating citation graph...', status: 'info' },
+        { icon: '🤗', text: '<span class="log-tool">Hugging Face</span> model hub queried · bert-base-uncased pulled', status: 'ok' },
+        { icon: '💬', text: '<span class="log-tool">ChatGPT</span> <span class="log-action">prompt</span> sent · research outline requested', status: 'info' },
+        { icon: '📊', text: '<span class="log-tool">R</span> script executed · ggplot2 visualization rendered', status: 'ok' },
+        { icon: '📋', text: '<span class="log-tool">Mendeley</span> export complete · APA 7th edition format', status: 'ok' },
+        { icon: '⚡', text: '<span class="log-tool">Gemini 1.5 Pro</span> summarizing 5 papers · 98% accuracy', status: 'ok' },
+        { icon: '🔍', text: '<span class="log-tool">Connected Papers</span> 3 new clusters detected', status: 'info' },
+        { icon: '🧠', text: '<span class="log-tool">Claude 3.5 Sonnet</span> research gap identified · 2 novel angles', status: 'ok' },
+        { icon: '📝', text: '<span class="log-tool">ChatGPT</span> draft methodology section generated', status: 'ok' },
+        { icon: '🔬', text: '<span class="log-tool">Python</span> <span class="log-action">ML pipeline</span> · model accuracy: 94.2%', status: 'ok' },
+        { icon: '⚠️', text: '<span class="log-tool">Zotero</span> duplicate entry detected · manual review suggested', status: 'warn' },
+        { icon: '🤗', text: '<span class="log-tool">Hugging Face</span> fine-tuning checkpoint saved', status: 'ok' },
+        { icon: '🎯', text: '<span class="log-tool">Research Rabbit</span> recommended 8 new papers this session', status: 'ok' },
+      ];
+
+      let evtIdx = 0;
+
+      function addLogEntry(evt) {
+        if (logEmpty) logEmpty.remove();
+        logCount++;
+
+        const entry = document.createElement('div');
+        entry.className = 'log-entry';
+        const statusClass = evt.status === 'ok' ? 'log-status-ok'
+                          : evt.status === 'warn' ? 'log-status-warn'
+                          : 'log-status-info';
+        entry.innerHTML = `
+          <span class="log-time">${getTime()}</span>
+          <span class="log-icon">${evt.icon}</span>
+          <span class="log-text ${statusClass}">${evt.text}</span>
+        `;
+        logFeed.appendChild(entry);
+
+        // Keep max 40 entries
+        const entries = logFeed.querySelectorAll('.log-entry');
+        if (entries.length > 40) entries[0].remove();
+
+        // Auto-scroll if log tab active
+        if (tabLog.classList.contains('active')) {
+          logContent.scrollTop = logContent.scrollHeight;
+        } else {
+          // Increment unread badge
+          unreadLogs++;
+          if (!isOpen) {
+            toggleBadge.style.display = 'flex';
+            toggleBadge.textContent = unreadLogs > 9 ? '9+' : unreadLogs;
+          }
+          logBadgeTab.style.display = 'inline-block';
+          logBadgeTab.textContent = unreadLogs;
+        }
+      }
+
+      // Fire initial burst
+      function fireInitialLogs() {
+        const burst = logEvents.slice(0, 5);
+        burst.forEach((evt, i) => {
+          setTimeout(() => addLogEntry(evt), i * 600 + 800);
+        });
+        evtIdx = 5;
+      }
+
+      // Periodic log events
+      function scheduleLogs() {
+        const delay = 4000 + Math.random() * 8000;
+        setTimeout(() => {
+          if (evtIdx < logEvents.length) {
+            addLogEntry(logEvents[evtIdx++]);
+          } else {
+            // Loop with slight variation
+            const randEvt = logEvents[Math.floor(Math.random() * logEvents.length)];
+            addLogEntry(randEvt);
+          }
+          scheduleLogs();
+        }, delay);
+      }
+
+      fireInitialLogs();
+      scheduleLogs();
+
+      // Auto-open after 2.5s with a hint
+      setTimeout(() => {
+        if (!isOpen) {
+          toggleBadge.style.display = 'flex';
+          toggleBadge.textContent = '!';
+        }
+      }, 2500);
+
+    })();
   </script>
 
 </body>
