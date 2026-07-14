@@ -401,6 +401,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transform: translateY(-60px);
     }
 
     /* Floating tags cloud styling */
@@ -2719,7 +2720,19 @@
             <span class="price-amount">₹1,000</span>
           </div>
           <div class="price-note">
-            <strong>Food & Accommodation:</strong> On-campus facilities available at ₹250/- per day.
+            <strong>Food &amp; Accommodation:</strong> On-campus facilities available at ₹250/- per day.
+          </div>
+
+          <!-- Scan to Register -->
+          <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap; margin-top: 24px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 24px;">
+            <div style="flex: 1; min-width: 160px;">
+              <h3 style="font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">Scan to Register</h3>
+              <p style="font-size: 0.8rem; color: var(--text-dim); line-height: 1.5; margin-bottom: 14px;">Scan this QR code using your mobile phone camera or scanner app to open the online registration form directly.</p>
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSf77bg5BUFTEq468Jpt-_-7yg6oVgvXRDgPNy3cwXEMqigQ_w/viewform?usp=header" target="_blank" class="btn-primary" style="padding: 10px 20px; font-size: 0.72rem; text-align: center; display: inline-block; width: 100%;">Open Form</a>
+            </div>
+            <div style="background: white; padding: 10px; border-radius: var(--radius-sm); box-shadow: 0 2px 12px rgba(142,68,173,0.1); width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <img src="qr_code.png" alt="Registration QR Code" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
           </div>
         </div>
 
@@ -2777,20 +2790,6 @@
             </div>
           </div>
 
-          <div class="contact-block" style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap;">
-            <div style="flex: 1; min-width: 180px;">
-              <h3 class="contact-title" style="margin-bottom: 12px;">Scan to Register</h3>
-              <p style="font-size: 0.82rem; color: var(--text-dim); line-height: 1.5; margin-bottom: 16px;">
-                Scan this QR code using your mobile phone camera or scanner app to open the online registration form directly.
-              </p>
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSf77bg5BUFTEq468Jpt-_-7yg6oVgvXRDgPNy3cwXEMqigQ_w/viewform?usp=header" target="_blank" class="btn-primary" style="padding: 12px 24px; font-size: 0.75rem; text-align: center; display: inline-block; width: 100%;">
-                Open Form
-              </a>
-            </div>
-            <div style="background: white; padding: 12px; border-radius: var(--radius-sm); box-shadow: var(--shadow); width: 140px; height: 140px; display: flex; align-items: center; justify-content: center; margin: 0 auto; flex-shrink: 0;">
-              <img src="qr_code.png" alt="Registration QR Code" style="width: 100%; height: 100%; object-fit: contain;">
-            </div>
-          </div>
         </div>
       </div>
     </div>
