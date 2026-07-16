@@ -1709,13 +1709,13 @@
 
     .tools-panel {
       width: 320px;
-      background: rgba(15, 15, 15, 0.92);
+      background: rgba(255, 255, 255, 0.97);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(200, 255, 0, 0.18);
+      border: 1px solid rgba(142, 68, 173, 0.2);
       border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(200, 255, 0, 0.06);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(142, 68, 173, 0.08);
       transform: translateY(20px) scale(0.95);
       opacity: 0;
       pointer-events: none;
@@ -1777,8 +1777,8 @@
       width: 28px;
       height: 28px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(0, 0, 0, 0.12);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1787,14 +1787,14 @@
     }
 
     .tools-panel-close:hover {
-      background: rgba(200, 255, 0, 0.12);
+      background: rgba(142, 68, 173, 0.12);
       border-color: var(--accent);
     }
 
     .tools-panel-close svg {
       width: 12px;
       height: 12px;
-      color: rgba(255, 255, 255, 0.6);
+      color: #666666;
     }
 
     /* Tabs */
@@ -1814,7 +1814,7 @@
       letter-spacing: 1.5px;
       cursor: pointer;
       transition: background 0.2s, color 0.2s;
-      color: rgba(255, 255, 255, 0.5);
+      color: #888888;
       background: transparent;
       border: 1px solid transparent;
     }
@@ -1826,8 +1826,8 @@
     }
 
     .tools-tab:hover:not(.active) {
-      background: rgba(255, 255, 255, 0.08);
-      color: rgba(255, 255, 255, 0.8);
+      background: rgba(0, 0, 0, 0.05);
+      color: #444444;
     }
 
     /* Panel Body */
@@ -1857,10 +1857,10 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 2px;
-      color: rgba(255, 255, 255, 0.4);
+      color: #999999;
       margin: 16px 0 8px;
       padding-bottom: 6px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     }
 
     .tool-category-label:first-child {
@@ -1879,7 +1879,7 @@
     }
 
     .tool-item:hover {
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(142, 68, 173, 0.06);
     }
 
     .tool-item-icon {
@@ -1902,7 +1902,7 @@
     .tool-item-name {
       font-size: 0.82rem;
       font-weight: 600;
-      color: rgba(255, 255, 255, 0.9);
+      color: #212121;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -1910,7 +1910,7 @@
 
     .tool-item-desc {
       font-size: 0.66rem;
-      color: rgba(255, 255, 255, 0.45);
+      color: #757575;
       margin-top: 1px;
       white-space: nowrap;
       overflow: hidden;
@@ -1962,7 +1962,7 @@
       gap: 8px;
       align-items: flex-start;
       padding: 4px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
       animation: logFadeIn 0.4s ease-out;
     }
 
