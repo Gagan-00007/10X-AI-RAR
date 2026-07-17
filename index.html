@@ -1825,6 +1825,24 @@
       border-color: rgba(200, 255, 0, 0.25);
     }
 
+    /* LOG tab gets a light background to distinguish it */
+    #tabLog {
+      background: #f0f0ff;
+      color: #5a5a8a;
+      border-color: rgba(142, 68, 173, 0.18);
+    }
+
+    #tabLog.active {
+      background: #e8e8ff;
+      color: var(--accent);
+      border-color: rgba(142, 68, 173, 0.35);
+    }
+
+    #tabLog:hover:not(.active) {
+      background: #ebebff;
+      color: #444466;
+    }
+
     .tools-tab:hover:not(.active) {
       background: rgba(0, 0, 0, 0.05);
       color: #444444;
@@ -1948,6 +1966,12 @@
     }
 
     /* Log Tab Content */
+    /* Light background for the log panel body */
+    #logContent {
+      background: #f8f7ff;
+      border-top: 1px solid rgba(142, 68, 173, 0.12);
+    }
+
     .log-container {
       font-family: 'Courier New', Courier, monospace;
       font-size: 0.68rem;
